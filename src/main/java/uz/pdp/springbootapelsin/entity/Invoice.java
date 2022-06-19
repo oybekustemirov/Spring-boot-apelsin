@@ -8,8 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,22 +17,21 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "invoice")
 public class Invoice {
-    @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //serial
     private Integer id;
 
-    // order_id
+    //order_id
     @OneToOne
     private Order order;
 
     @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal amount;
 
-    @CreatedDate // sistemadan
-    private Date issued;
+    @CreatedDate //sistemadan oladi
+    private java.util.Date issued;
 
-    // xozirgi +3 kun
+    //xozirgi +3 kun
     private Date due;
-
 
 }

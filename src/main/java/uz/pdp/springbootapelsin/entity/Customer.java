@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "customer")
 public class Customer {
-    @Id // primary key
+    @Id //pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) //serial
     private Integer id;
 
@@ -24,8 +24,8 @@ public class Customer {
     @Column(nullable = false, length = 3)
     private String country;
 
-    @Column(columnDefinition = "text") // endi 255 tadan ko'proq text qabul qla oladi
-    private String address;
+    @Column(columnDefinition = "text")
+    private String address; //255tadan ko'proq belgini qabul qila oladi
 
     @Column(length = 50)
     private String phone;

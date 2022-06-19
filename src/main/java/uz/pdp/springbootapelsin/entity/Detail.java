@@ -14,16 +14,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "detail")
 public class Detail {
-    @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // serial
+    @Id //pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //serial
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "ord_id")
     private Order order;
 
-    @ManyToOne // table ichida ustun ochadi
+    @ManyToOne //table ichida ustun ochadi
     @JoinColumn(name = "pr_id")
     private Product product;
-
+    @Column(nullable = false)
+    private Short quantity;
 }

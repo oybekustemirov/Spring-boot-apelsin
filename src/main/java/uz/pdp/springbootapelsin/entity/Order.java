@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,17 +16,21 @@ import java.sql.Date;
 @Entity
 @Table(name = "orders")
 public class Order {
-    @Id // primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //serial
     private Integer id;
 
     @Column(nullable = false)
-    private Date name;
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "cust_id")
-    private Customer customer;
+    private Customer customer; //customer_id
 
+    @OneToOne(mappedBy = "order")
+    private Invoice invoice;
 
+    @OneToMany(mappedBy = "order")
+    private List<Detail> detail;
 
 }
